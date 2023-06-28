@@ -1,0 +1,12 @@
+<form class="flex flex-col m-3" enctype="multipart/form-data" method="post" action="https://localhost:5126/api/v1/weatherforecast" [formGroup]="fileForm" (ngSubmit)="sendData()">
+
+    <h3 *ngIf="error" class="text-red-800">{{error}}</h3>
+
+    <label class="m-1" for="file">Excel file: </label>
+    <input class="m-1 border rounded-md" type="file" name="file" id="file" multiple (change)="onFileSelect($event)"/>
+    <div class="flex flex-row items-center justify-end">
+        <input *ngIf="loading" class="m-1 border rounded-md px-4 py-2 text-gray-200 bg-gray-100 border-gray-600" type="submit" value="Loading..." disabled/>
+        <input *ngIf="!loading" class="m-1 border rounded-md px-4 py-2 hover:bg-slate-400" type="submit" value="Upload"/>
+    </div>
+
+</form>
